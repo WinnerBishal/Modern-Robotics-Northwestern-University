@@ -1,4 +1,2 @@
-# Ignore a specific file
-D:\DELL XPS Backup Bishal\Bishal\COURSERA\Modern Robotics Northwestern University\Frank C. Park_ Kevin M. Lynch - Modern Robotics_ Mechanics, Planning, and Control-Cambridge University Press (2017).pdf
-D:\DELL XPS Backup Bishal\Bishal\COURSERA\Modern Robotics Northwestern University\Modern Robotics_ Mechanics, Planning, and Control   (Instructor  Solution  Manual, Solutions )-Cambridge University Press (2017).pdf
-D:\DELL XPS Backup Bishal\Bishal\COURSERA\Modern Robotics Northwestern University\MRlib.pdf
+# Ignore pdf files
+*.pdf
