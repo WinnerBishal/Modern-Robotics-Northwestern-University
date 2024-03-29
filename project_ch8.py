@@ -49,10 +49,10 @@ for i in range(300):
     recordedData.append(thetalist)                                                                         # Record the joint angles
     # print(f"Iteration {i+1}, thetalist: {thetalist}")                                                   ## Print the joint angles at each iteration
 
-pd.DataFrame(recordedData).to_csv("ch8_scenario1.csv", index=False)                                         # Save the recorded data to a CSV file
+pd.DataFrame(recordedData).to_csv("simulation1.csv", index=False)                                         # Save the recorded data to a CSV file
 
 # Scenario 2
-thetalist = [0, 0, -1, 0, 0, 0]      # Initial joint angles for scenario 2
+thetalist = [0, -1, 0, 0, 0, 0]      # Initial joint angles for scenario 2
 recordedData = [thetalist]           # List to store the joint angles at each iteration
 
 for i in range(500):
@@ -64,6 +64,6 @@ for i in range(500):
     recordedData.append(thetalist)
     # print(f"Iteration {i+1}, thetalist: {thetalist}")
     
-pd.DataFrame(recordedData).to_csv("ch8_scenario2.csv", index=False)
+pd.DataFrame(recordedData).to_csv("simulation2.csv", index=False)
 
 print("Data saved to ch8_scenario1.csv and ch8_scenario2.csv")
