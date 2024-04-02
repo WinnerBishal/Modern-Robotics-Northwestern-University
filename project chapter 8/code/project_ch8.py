@@ -28,20 +28,17 @@ Slist = [[0,         0,         0,         0,        0,        0],
          [0,         0,     0.425,   0.81725,        0,  0.81725]]
 
 
-# Conditions for the simulation
-
+# Scenario 1
 g = np.array([0, 0, -9.81])
 taulist = [0, 0, 0, 0, 0, 0]
 dthetalist = [0, 0, 0, 0, 0, 0]
 Ftip = [0, 0, 0, 0, 0, 0]
-
-# Scenario 1
 thetalist = [0, 0, 0, 0, 0, 0]       # Initial joint angles for scenario 1
 recordedData = [thetalist]           # List to store the joint angles at each iteration
 
 # Run the simulation for 300 iterations
 for i in range(300):
-    dt = 0.001                                                                                             # Time step of 0.001 seconds at each iteration                                                                                                                     
+    dt = 0.01                                                                                             # Time step of 0.01 seconds at each iteration                                                                                                                     
     ddthetalist = mr.ForwardDynamics(thetalist, dthetalist, taulist, g, Ftip, Mlist, Glist, Slist)         # Calculate the joint accelerations  
     [thetalistNext, dthetalistNext] = mr.EulerStep(thetalist, dthetalist, ddthetalist, dt)                 # Update the joint angles and velocities      
     thetalist = thetalistNext                                                                              # Update the joint angles
@@ -49,14 +46,18 @@ for i in range(300):
     recordedData.append(thetalist)                                                                         # Record the joint angles
     # print(f"Iteration {i+1}, thetalist: {thetalist}")                                                   ## Print the joint angles at each iteration
 
-pd.DataFrame(recordedData).to_csv("simulation1.csv", index=False)                                         # Save the recorded data to a CSV file
+pd.DataFrame(recordedData).to_csv("simulation1.csv", index=False, header = False)                                         # Save the recorded data to a CSV file
 
 # Scenario 2
+g = np.array([0, 0, -9.81])
+taulist = [0, 0, 0, 0, 0, 0]
+dthetalist = [0, 0, 0, 0, 0, 0]
+Ftip = [0, 0, 0, 0, 0, 0]
 thetalist = [0, -1, 0, 0, 0, 0]      # Initial joint angles for scenario 2
 recordedData = [thetalist]           # List to store the joint angles at each iteration
 
 for i in range(500):
-    dt = 0.001   
+    dt = 0.01   
     ddthetalist = mr.ForwardDynamics(thetalist, dthetalist, taulist, g, Ftip, Mlist, Glist, Slist)
     [thetalistNext, dthetalistNext] = mr.EulerStep(thetalist, dthetalist, ddthetalist, dt)
     thetalist = thetalistNext
@@ -64,6 +65,6 @@ for i in range(500):
     recordedData.append(thetalist)
     # print(f"Iteration {i+1}, thetalist: {thetalist}")
     
-pd.DataFrame(recordedData).to_csv("simulation2.csv", index=False)
+pd.DataFrame(recordedData).to_csv("simulation2.csv", index=False, header = False)
 
-print("Data saved to ch8_scenario1.csv and ch8_scenario2.csv")
+print("Data saved to simulation1.csv and simulation2.csv")
